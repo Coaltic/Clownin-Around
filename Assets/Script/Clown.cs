@@ -1,0 +1,46 @@
+using UnityEngine;
+
+public class Clown : MonoBehaviour
+{
+    public GameObject[] ballPlacments;
+    public Animator anim;
+    public GameManager _gameManager;
+
+    private void Awake()
+    {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        ballPlacments = new GameObject[10];
+        for (int i = 0; i < this.gameObject.transform.childCount - 1; i++)
+        {
+            ballPlacments[i] = this.gameObject.transform.GetChild(i + 1).gameObject;
+        }
+    }
+
+    void Start()
+    {
+        anim = this.GetComponent<Animator>();
+        
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        anim.SetInteger("BallNum", _gameManager.ownedBallsInt);
+    }
+
+    public void UpdateBalls()
+    {
+        int i = _gameManager.ownedBallsInt;
+        ballPlacments[i].gameObject.SetActive(true);
+        ballPlacments[i].GetComponent<SpriteRenderer>().sprite = _gameManager.ownedBallSprites[i];
+        Debug.Log(_gameManager.ownedBallsInt);
+
+        /*for (int i = 0; i <= _gameManager.ownedBallsInt; i++)
+        {
+            ballPlacments[i].gameObject.SetActive(true);
+            ballPlacments[i].GetComponent<SpriteRenderer>().sprite = _gameManager.ownedBallSprites[i];
+            Debug.Log(_gameManager.ownedBallsInt);
+        }*/
+    }
+}
