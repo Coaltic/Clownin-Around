@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour
     public TMP_Text timerText;
     public TMP_Text moneyText;
 
-
     public GameObject clownPrefab;
     public GameObject clownPosition;
     public Clown clown;
+
+    public GameObject pedestrianPrefab;
+    public GameObject leftLoadingZone;
+    public GameObject rightLoadingZone;
 
     public Sprite[] ballSprites;
     public Sprite[] ownedBallSprites;
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
         if (isDayActive)
         {
             DayTimer();
+            DeterminePedestrianSpawn();
         }
     }
 
@@ -73,10 +77,34 @@ public class GameManager : MonoBehaviour
         
         clown.UpdateBalls();
         ownedBallsInt++;
-        /*for (int i = 0; i < ownedBallsInt; i++)
+    }
+
+    public void DeterminePedestrianSpawn()
+    {
+        int r = Random.Range(0, 600);
+
+        if (r == 1)
         {
-            clown.ballsArray[i].SetActive(true);
-            clown.ballsArray[i].SetActive(true);
-        }*/
+            // Debug.Log("Pedestrian has spawned");
+            SpawnPedestrian();
+        }
+    }
+
+    public void SpawnPedestrian()
+    {
+        GameObject pedestrian = Instantiate(pedestrianPrefab);
+        int rndSide = Random.Range(1, 3);
+        if (rndSide == 1)
+        {
+            // Debug.Log("Pedestrian has spawned on the left side");
+            pedestrian.GetComponent<Pedestrian>().facingLeft = false;
+            pedestrian.transform.position = leftLoadingZone.transform.position;
+        }
+        if (rndSide == 2)
+        {
+            // Debug.Log("Pedestrian has spawned on the right side");
+            pedestrian.GetComponent<Pedestrian>().facingLeft = true;
+            pedestrian.transform.position = rightLoadingZone.transform.position;
+        }
     }
 }
