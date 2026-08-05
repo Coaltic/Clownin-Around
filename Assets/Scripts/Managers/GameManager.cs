@@ -94,15 +94,15 @@ public class GameManager : MonoBehaviour
     {
         GameObject pedestrian = Instantiate(pedestrianPrefab);
         int rndSide = Random.Range(1, 3);
-        if (rndSide == 1)
+        if (rndSide == 1) // spawns on the left
         {
             // Debug.Log("Pedestrian has spawned on the left side");
             pedestrian.GetComponent<Pedestrian>().facingLeft = false;
             pedestrian.transform.position = leftLoadingZone.transform.position;
         }
-        if (rndSide == 2)
+        if (rndSide == 2) // spawns on the right
         {
-            // Debug.Log("Pedestrian has spawned on the right side");
+            pedestrian.GetComponentInChildren<SpriteRenderer>().sortingOrder = 5;
             pedestrian.GetComponent<Pedestrian>().facingLeft = true;
             pedestrian.transform.position = rightLoadingZone.transform.position;
         }
