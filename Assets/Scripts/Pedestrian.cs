@@ -50,6 +50,7 @@ public class Pedestrian : MonoBehaviour
         if (r == 1 && !watchingClown)
         {
             watchingClown = true;
+            _gameManager.dailyVisitorsNum++;
             anim.SetTrigger("Watching Clown");
             anim.speed = Random.Range(0.1f, 1.5f);
 
@@ -67,6 +68,7 @@ public class Pedestrian : MonoBehaviour
         if (r == 1)
         {
             _gameManager.money++;
+            _gameManager.dailyMoneyEarned++;
         }
     }
 

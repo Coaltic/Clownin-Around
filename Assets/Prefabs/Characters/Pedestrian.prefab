@@ -54,6 +54,8 @@ MonoBehaviour:
   speed: 2
   watchingClown: 0
   alreadyStopped: 0
+  clown: {fileID: 0}
+  _gameManager: {fileID: 0}
 --- !u!95 &1499626359618312542
 Animator:
   serializedVersion: 7
@@ -244,7 +246,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6848819703073089627, guid: f0d66f7a0003d064cab5db51aa872911, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
