@@ -6,6 +6,11 @@ public class Clown : MonoBehaviour
     public Animator anim;
     public GameManager _gameManager;
 
+    public int actionPoints;
+    public int goofiness;
+    public int skill;
+    public int style;
+
     private void Awake()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();

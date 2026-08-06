@@ -7,13 +7,14 @@ public class Pedestrian : MonoBehaviour
     public float speed = 2.0f;
     public bool watchingClown;
     public bool alreadyStopped;
+    public bool alreadyPaid;
     public Clown clown;
     public GameManager _gameManager;
 
     void Start()
     {
-        clown = GameObject.Find("Clown(Clone)").GetComponent<Clown>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        clown = _gameManager.clown;  // GameObject.Find("Clown(Clone)").GetComponent<Clown>();
         anim = this.gameObject.GetComponent<Animator>();
         if (!facingLeft)
         {
@@ -45,14 +46,14 @@ public class Pedestrian : MonoBehaviour
 
     public void DetermineStopping()
     {
-        int r = Random.Range(0, 50);
+        int r = Random.Range(0, (600 - clown.style));
 
         if (r == 1 && !watchingClown)
         {
             watchingClown = true;
             _gameManager.dailyVisitorsNum++;
             anim.SetTrigger("Watching Clown");
-            anim.speed = Random.Range(0.1f, 1.5f);
+            anim.speed = DetermineWatchTime();
 
         }
         if (watchingClown)
@@ -63,13 +64,20 @@ public class Pedestrian : MonoBehaviour
 
     public void DeterminePaying()
     {
-        int r = Random.Range(0, 10);
+        int r = Random.Range(0, (600 - clown.skill));
 
-        if (r == 1)
+        if (r == 1 && !alreadyPaid)
         {
             _gameManager.money++;
             _gameManager.dailyMoneyEarned++;
+            alreadyPaid = true;
         }
+    }
+
+    public float DetermineWatchTime()
+    {
+        float watchtime = Random.Range((1.0f / clown.goofiness), 1.0f);
+        return watchtime;
     }
 
     public void WalkAway()

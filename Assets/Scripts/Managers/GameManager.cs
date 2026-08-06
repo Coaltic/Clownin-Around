@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     public int dailyMoneyEarned;
     public int dailyVisitorsNum;
 
+    public int clownGoofinessPoints;
+    public int clownSkillPoints;
+    public int clownStylePoints;
+
     private void Awake()
     {
 
@@ -76,6 +80,10 @@ public class GameManager : MonoBehaviour
         _menuManager.endOfDayMenu.gameObject.SetActive(true);
         _menuManager.visitorNumText.text = dailyVisitorsNum.ToString();
         _menuManager.moneyEarnedText.text = dailyMoneyEarned.ToString();
+
+        clownGoofinessPoints = clown.goofiness;
+        clownSkillPoints = clown.skill;
+        clownStylePoints = clown.style;
 
     }
 
