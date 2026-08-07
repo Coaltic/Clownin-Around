@@ -44,3 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bb43e451a747e419827ad38bdd42ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
+  _gameManager: {fileID: 0}
+  endOfDayMenu: {fileID: 0}
+  visitorNumText: {fileID: 0}
+  moneyEarnedText: {fileID: 0}
+  goofyText: {fileID: 0}
+  skillText: {fileID: 0}
+  styleText: {fileID: 0}
+  blackoutPrefab: {fileID: 4149346211977993541, guid: 8914dba1df76e70469bedcbac807a241, type: 3}

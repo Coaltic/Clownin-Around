@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,8 @@ public class MenuManager : MonoBehaviour
     public TMP_Text skillText;
     public TMP_Text styleText;
 
+    public GameObject blackoutPrefab;
+
 
     void Start()
     {
@@ -25,11 +28,16 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnClickGoHome()
     {
         SceneManager.LoadScene("House");
+    }
+
+    public void OnClickBed()
+    {
+        Instantiate(blackoutPrefab, GameObject.Find("Canvas").transform, false);
     }
 }
