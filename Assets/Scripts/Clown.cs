@@ -19,6 +19,10 @@ public class Clown : MonoBehaviour
         {
             ballPlacments[i] = this.gameObject.transform.GetChild(i + 1).gameObject;
         }
+
+        goofiness = _gameManager.clownGoofinessPoints;
+        skill = _gameManager.clownSkillPoints;
+        style = _gameManager.clownStylePoints;
     }
 
     void Start()
@@ -36,9 +40,16 @@ public class Clown : MonoBehaviour
 
     public void UpdateBalls()
     {
-        int i = _gameManager.ownedBallsInt;
-        ballPlacments[i].gameObject.SetActive(true);
-        ballPlacments[i].GetComponent<SpriteRenderer>().sprite = _gameManager.ownedBallSprites[i];
+        //int i = _gameManager.ownedBallsInt;
+        Debug.Log("Running Update Ball");
+        for (int i = 0; i <= _gameManager.ownedBallsInt; i++)
+        {
+            ballPlacments[i].gameObject.SetActive(true);
+            ballPlacments[i].GetComponent<SpriteRenderer>().sprite = _gameManager.ownedBallSpritesList[0];
+            Debug.Log("Inside Loop");
+        }
+        
+        
         Debug.Log(_gameManager.ownedBallsInt);
 
         /*for (int i = 0; i <= _gameManager.ownedBallsInt; i++)

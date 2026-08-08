@@ -32,7 +32,10 @@ public class Blackout : MonoBehaviour
         if (fadeoutDone)
         {
             timer -= Time.deltaTime;
-            if (timer <= 0) SceneManager.LoadScene("BasicStreet");
+            if (timer <= 0)
+            {
+                SceneManager.LoadScene("BasicStreet");
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -21,10 +22,10 @@ public class GameManager : MonoBehaviour
     public GameObject rightLoadingZone;
 
     public Sprite[] ballSprites;
-    public Sprite[] ownedBallSprites;
+    public List<Sprite> ownedBallSpritesList;
 
     public int money;
-    public int ownedBallsInt = 0;
+    public int ownedBallsInt = 1;
 
     public int dailyMoneyEarned;
     public int dailyVisitorsNum;
@@ -41,13 +42,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        ownedBallSprites = new Sprite[ballSprites.Length];
+        
         if (clownPosition == null) clownPosition = GameObject.Find("Clown Position");
         _menuManager = this.gameObject.GetComponentInChildren<MenuManager>();
         clown = Instantiate(clownPrefab).GetComponent<Clown>();
         clown.gameObject.transform.SetParent(clownPosition.transform, false);
-        Debug.Log(ownedBallsInt);
-        BuyBall(ballSprites[0]);
+        LoadBalls();
+        // BuyBall(ballSprites[0]);
         OnDayStart();
         
     }
@@ -64,10 +65,12 @@ public class GameManager : MonoBehaviour
 
     public void OnDayStart()
     {
+        
         dailyTimer = dailyTimerMax;
         dailyMoneyEarned = 0;
         dailyVisitorsNum = 0;
         isDayActive = true;
+        _menuManager.ChangedActiveScene();
     }
 
     public void EndOfDay()
@@ -96,10 +99,14 @@ public class GameManager : MonoBehaviour
         if (dailyTimer < 0.0f) EndOfDay();
     }
 
+    public void LoadBalls()
+    {
+        clown.UpdateBalls();
+    }
     public void BuyBall(Sprite ballSprite)
     {
         Debug.Log(ownedBallsInt);
-        ownedBallSprites[ownedBallsInt] = ballSprite;
+        ownedBallSpritesList[ownedBallsInt] = ballSprite;
         
         clown.UpdateBalls();
         ownedBallsInt++;
