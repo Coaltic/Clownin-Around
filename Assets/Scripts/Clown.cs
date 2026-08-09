@@ -50,7 +50,7 @@ public class Clown : MonoBehaviour
         }
         
         
-        Debug.Log(_gameManager.ownedBallsInt);
+        // Debug.Log(_gameManager.ownedBallsInt);
 
         /*for (int i = 0; i <= _gameManager.ownedBallsInt; i++)
         {

@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
     
     void Start()
     {
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _gameManager = this.transform.parent.GetComponent<GameManager>();  // GameObject.Find("GameManager").GetComponent<GameManager>();
         Debug.Log("Running On Start");
         
     }
@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
         //ChangedActiveScene();
     }
 
-    public void ChangedActiveScene()
+    public void ChangedActiveScene(int goofyStat, int skillStat, int styleStat)
     {
         statsPanel = Instantiate(statsPanelPrefab);
         statsPanel.transform.SetParent(GameObject.Find("UI Canvas").transform, false);
@@ -41,9 +41,9 @@ public class MenuManager : MonoBehaviour
         skillText = statsPanel.transform.GetChild(1).GetComponent<TMP_Text>();
         styleText = statsPanel.transform.GetChild(2).GetComponent<TMP_Text>();
 
-        //goofyText.text = "Goofiness: " + _gameManager.clown.goofiness;
-        //skillText.text = "Skill: " + _gameManager.clown.skill;
-        //styleText.text = "Style: " + _gameManager.clown.style;
+        goofyText.text = "Goofiness: " + goofyStat;
+        skillText.text = "Skill: " + skillStat;
+        styleText.text = "Style: " + styleStat;
     }
 
     public void OnClickGoHome()

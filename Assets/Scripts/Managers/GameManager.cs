@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
     public int dailyMoneyEarned;
     public int dailyVisitorsNum;
 
-    public int clownGoofinessPoints;
-    public int clownSkillPoints;
-    public int clownStylePoints;
+    public int clownGoofinessPoints = 0;
+    public int clownSkillPoints = 0;
+    public int clownStylePoints = 0;
 
     private void Awake()
     {
@@ -65,12 +65,11 @@ public class GameManager : MonoBehaviour
 
     public void OnDayStart()
     {
-        
         dailyTimer = dailyTimerMax;
         dailyMoneyEarned = 0;
         dailyVisitorsNum = 0;
         isDayActive = true;
-        _menuManager.ChangedActiveScene();
+        _menuManager.ChangedActiveScene(clownGoofinessPoints, clownSkillPoints, clownStylePoints);
     }
 
     public void EndOfDay()
