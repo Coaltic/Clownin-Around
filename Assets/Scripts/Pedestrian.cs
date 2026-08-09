@@ -46,7 +46,7 @@ public class Pedestrian : MonoBehaviour
 
     public void DetermineStopping()
     {
-        int r = Random.Range(0, (600 - _gameManager.clown.style));
+        int r = Random.Range(0, (600 - _gameManager.clownStylePoints));
 
         if (r == 1 && !watchingClown)
         {
@@ -64,7 +64,7 @@ public class Pedestrian : MonoBehaviour
 
     public void DeterminePaying()
     {
-        int r = Random.Range(0, (600 - _gameManager.clown.skill));
+        int r = Random.Range(0, (600 - _gameManager.clownSkillPoints));
 
         if (r == 1 && !alreadyPaid)
         {
@@ -76,7 +76,10 @@ public class Pedestrian : MonoBehaviour
 
     public float DetermineWatchTime()
     {
-        float watchtime = Random.Range((1.0f / _gameManager.clown.goofiness), 1.0f);
+        float watchtime = Random.Range((1.0f / _gameManager.clownGoofinessPoints), 1.0f);
+        if (_gameManager.clownGoofinessPoints == 1) watchtime = 1.0f;
+        Debug.Log(_gameManager.clownGoofinessPoints);
+        Debug.Log(watchtime);
         return watchtime;
     }
 

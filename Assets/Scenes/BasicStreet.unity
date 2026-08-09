@@ -1268,6 +1268,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2095072274}
     - target: {fileID: 1995735363359412322, guid: 549e4c4e092be1d40a2aeca7e1a5d621, type: 3}
+      propertyPath: clownSkillPoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995735363359412322, guid: 549e4c4e092be1d40a2aeca7e1a5d621, type: 3}
+      propertyPath: clownStylePoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995735363359412322, guid: 549e4c4e092be1d40a2aeca7e1a5d621, type: 3}
       propertyPath: pedestrianPrefab
       value: 
       objectReference: {fileID: 2001406624229507660, guid: 8ad93f091f585364fbfa062f599cb68e, type: 3}
@@ -1275,6 +1283,10 @@ PrefabInstance:
       propertyPath: rightLoadingZone
       value: 
       objectReference: {fileID: 1248930026}
+    - target: {fileID: 1995735363359412322, guid: 549e4c4e092be1d40a2aeca7e1a5d621, type: 3}
+      propertyPath: clownGoofinessPoints
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1995735363359412322, guid: 549e4c4e092be1d40a2aeca7e1a5d621, type: 3}
       propertyPath: ownedBallSprites.Array.size
       value: 1

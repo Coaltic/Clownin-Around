@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
     public int dailyMoneyEarned;
     public int dailyVisitorsNum;
 
-    public int clownGoofinessPoints = 0;
-    public int clownSkillPoints = 0;
-    public int clownStylePoints = 0;
+    public int clownGoofinessPoints = 1; // determines pedestrians watchtime (giving them a better chance of getting paid)
+    public int clownSkillPoints = 1; // determines if pedestrians will want to pay
+    public int clownStylePoints = 1; // determines if pedestrians will want to stop
 
     private void Awake()
     {
@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject gameManObject = GameObject.Find("GameManager");
+        if (gameManObject != this.gameObject) Destroy(gameManObject);
+
         if (isDayActive)
         {
             DayTimer();
@@ -83,9 +86,9 @@ public class GameManager : MonoBehaviour
         _menuManager.visitorNumText.text = dailyVisitorsNum.ToString();
         _menuManager.moneyEarnedText.text = dailyMoneyEarned.ToString();
 
-        clownGoofinessPoints = clown.goofiness;
-        clownSkillPoints = clown.skill;
-        clownStylePoints = clown.style;
+        //clownGoofinessPoints = clown.goofiness;
+        //clownSkillPoints = clown.skill;
+        //clownStylePoints = clown.style;
 
     }
 
