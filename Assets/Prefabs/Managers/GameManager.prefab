@@ -72,6 +72,6 @@ MonoBehaviour:
   ownedBallsInt: 0
   dailyMoneyEarned: 0
   dailyVisitorsNum: 0
-  clownGoofinessPoints: 0
-  clownSkillPoints: 0
-  clownStylePoints: 0
+  clownGoofinessPoints: 1
+  clownSkillPoints: 1
+  clownStylePoints: 1
