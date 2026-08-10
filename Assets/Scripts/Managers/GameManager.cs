@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public bool startOfDay;
     public bool isDayActive;
     public float dailyTimerMax = 120.0f;
     public float dailyTimer;
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject clownPrefab;
     public GameObject clownPosition;
     public Clown clown;
+    public GameObject menuManagerPrefab;
     public MenuManager _menuManager;
 
     public GameObject pedestrianPrefab;
@@ -25,53 +27,67 @@ public class GameManager : MonoBehaviour
     public List<Sprite> ownedBallSpritesList;
 
     public int money;
-    public int ownedBallsInt = 1;
+    public int ownedBallsInt;
 
     public int dailyMoneyEarned;
     public int dailyVisitorsNum;
 
-    public int clownGoofinessPoints = 1; // determines pedestrians watchtime (giving them a better chance of getting paid)
-    public int clownSkillPoints = 1; // determines if pedestrians will want to pay
-    public int clownStylePoints = 1; // determines if pedestrians will want to stop
+    public int clownGoofinessPoints; // determines pedestrians watchtime (giving them a better chance of getting paid)
+    public int clownSkillPoints; // determines if pedestrians will want to pay
+    public int clownStylePoints; // determines if pedestrians will want to stop
 
     private void Awake()
     {
 
         DontDestroyOnLoad(this.gameObject);
+        startOfDay = true;
     }
 
     void Start()
     {
         
-        if (clownPosition == null) clownPosition = GameObject.Find("Clown Position");
-        _menuManager = this.gameObject.GetComponentInChildren<MenuManager>();
-        clown = Instantiate(clownPrefab).GetComponent<Clown>();
-        clown.gameObject.transform.SetParent(clownPosition.transform, false);
-        LoadBalls();
-        // BuyBall(ballSprites[0]);
-        OnDayStart();
+        
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameObject gameManObject = GameObject.Find("GameManager");
-        if (gameManObject != this.gameObject) Destroy(gameManObject);
+        if (SceneManager.GetActiveScene().name == "BasicStreet" && startOfDay)
+        {
+            OnDayStart();
+            startOfDay = false;
+        }
 
         if (isDayActive)
         {
             DayTimer();
             DeterminePedestrianSpawn();
         }
+
     }
 
     public void OnDayStart()
     {
+        timerText = GameObject.Find("UI Canvas/Timer Text").GetComponent<TMP_Text>();
+        moneyText = GameObject.Find("UI Canvas/Money Text").GetComponent<TMP_Text>();
+        leftLoadingZone = GameObject.Find("Left Loading Zone");
+        rightLoadingZone = GameObject.Find("Right Loading Zone");
+
+        if (clownPosition == null) clownPosition = GameObject.Find("Clown Position");
+        if (_menuManager == null) _menuManager = Instantiate(menuManagerPrefab).GetComponent<MenuManager>();
+        _menuManager.transform.SetParent(this.gameObject.transform);
+        _menuManager.gameObject.name = "MenuManager";
+        clown = Instantiate(clownPrefab).GetComponent<Clown>();
+        clown.gameObject.transform.SetParent(clownPosition.transform, false);
+        LoadBalls();
+
         dailyTimer = dailyTimerMax;
         dailyMoneyEarned = 0;
         dailyVisitorsNum = 0;
         isDayActive = true;
+        Debug.Log("Goofy: " + clownGoofinessPoints + " Skill: " + clownSkillPoints + " Style: " + clownStylePoints);
+        _menuManager.UISet = false;
         _menuManager.ChangedActiveScene(clownGoofinessPoints, clownSkillPoints, clownStylePoints);
     }
 
@@ -82,9 +98,10 @@ public class GameManager : MonoBehaviour
         sky.color = new Color(0.0f, 0.12f, 0.18f);
         clown.anim.SetTrigger("EndOfDay");
 
-        _menuManager.endOfDayMenu.gameObject.SetActive(true);
+        _menuManager.EndOfWorkDay(dailyVisitorsNum, dailyMoneyEarned);
+        /*_menuManager.endOfDayMenu.gameObject.SetActive(true);
         _menuManager.visitorNumText.text = dailyVisitorsNum.ToString();
-        _menuManager.moneyEarnedText.text = dailyMoneyEarned.ToString();
+        _menuManager.moneyEarnedText.text = dailyMoneyEarned.ToString();*/
 
         //clownGoofinessPoints = clown.goofiness;
         //clownSkillPoints = clown.skill;

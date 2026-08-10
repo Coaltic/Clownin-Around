@@ -44,10 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd73a1a077108814eacdddca5b8ed74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  startOfDay: 0
   isDayActive: 0
   dailyTimerMax: 120
   dailyTimer: 0
+  timerText: {fileID: 0}
+  moneyText: {fileID: 0}
   clownPrefab: {fileID: 8564061607611769686, guid: 88bee91e08e7e084a9e5958d6a798b3b, type: 3}
+  clownPosition: {fileID: 0}
+  clown: {fileID: 0}
+  menuManagerPrefab: {fileID: 1780371696654065739, guid: aa388b748d961084a88a7883ac63fcdf, type: 3}
+  _menuManager: {fileID: 0}
+  pedestrianPrefab: {fileID: 2001406624229507660, guid: 8ad93f091f585364fbfa062f599cb68e, type: 3}
+  leftLoadingZone: {fileID: 0}
+  rightLoadingZone: {fileID: 0}
   ballSprites:
   - {fileID: 6722531949709024266, guid: c8e4250f3c1ac8349b21662df31c39aa, type: 3}
   - {fileID: -1203998104, guid: c8e4250f3c1ac8349b21662df31c39aa, type: 3}
@@ -56,3 +66,12 @@ MonoBehaviour:
   - {fileID: -813545647, guid: c8e4250f3c1ac8349b21662df31c39aa, type: 3}
   - {fileID: -1855020180, guid: c8e4250f3c1ac8349b21662df31c39aa, type: 3}
   - {fileID: -2132490174, guid: c8e4250f3c1ac8349b21662df31c39aa, type: 3}
+  ownedBallSpritesList:
+  - {fileID: 6722531949709024266, guid: c8e4250f3c1ac8349b21662df31c39aa, type: 3}
+  money: 0
+  ownedBallsInt: 0
+  dailyMoneyEarned: 0
+  dailyVisitorsNum: 0
+  clownGoofinessPoints: 0
+  clownSkillPoints: 0
+  clownStylePoints: 0

@@ -45,10 +45,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
   _gameManager: {fileID: 0}
+  endOfDayMenuPrefab: {fileID: 3845092656768753600, guid: 8d3432dd43c7df245bbdf8a119aa7ed9, type: 3}
   endOfDayMenu: {fileID: 0}
+  statsPanelPrefab: {fileID: 4200379067871225812, guid: 1dd618edf1fcf044093ef23ee1843a0e, type: 3}
+  statsPanel: {fileID: 0}
   visitorNumText: {fileID: 0}
   moneyEarnedText: {fileID: 0}
+  energyText: {fileID: 0}
+  moneyText: {fileID: 0}
   goofyText: {fileID: 0}
   skillText: {fileID: 0}
   styleText: {fileID: 0}
+  clownEnergyPoints: 0
+  UISet: 0
+  bedButton: {fileID: 0}
+  tvButton: {fileID: 0}
+  bookshelfButton: {fileID: 0}
+  computerButton: {fileID: 0}
   blackoutPrefab: {fileID: 4149346211977993541, guid: 8914dba1df76e70469bedcbac807a241, type: 3}
