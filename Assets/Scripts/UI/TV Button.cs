@@ -31,7 +31,6 @@ public class TVButton : MonoBehaviour
     public void OnMouseOver()
     {
         infoText.text = infoTextString;
-        Debug.Log("TV");
     }
 
     public void OnClickTV()

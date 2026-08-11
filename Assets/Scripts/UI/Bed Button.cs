@@ -27,7 +27,6 @@ public class BedButton : MonoBehaviour
     public void OnMouseOver()
     {
         infoText.text = infoTextString;
-        Debug.Log("Bed");
     }
 
     public void OnClickBed()
