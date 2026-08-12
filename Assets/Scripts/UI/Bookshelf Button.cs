@@ -18,7 +18,7 @@ public class BookshelfButton : MonoBehaviour
     void Update()
     {
         if (button == null) button = this.gameObject.GetComponent<Button>();
-        if (infoTextString == "") infoTextString = "$10: Reasearch clown aesthetics to raise your  style";
+        if (infoTextString == "") infoTextString = "$10: Reasearch clowning techniques to raise your skill";
         if (infoText == null) infoText = GameObject.Find("UI Canvas/Info Text").GetComponent<TMP_Text>();
         if (_gameManager == null) _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         if (_menuManager == null) _menuManager = GameObject.Find("GameManager/MenuManager").GetComponent<MenuManager>();
@@ -36,7 +36,7 @@ public class BookshelfButton : MonoBehaviour
     public void OnClickBookshelf()
     {
         _gameManager.money -= cost;
-        _gameManager.clownGoofinessPoints++;
+        _gameManager.clownSkillPoints++;
         _menuManager.clownEnergyPoints--;
         _menuManager.ChangedActiveScene(_gameManager.clownGoofinessPoints, _gameManager.clownSkillPoints, _gameManager.clownStylePoints);
     }
