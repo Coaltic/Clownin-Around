@@ -25,7 +25,7 @@ public class TVButton : MonoBehaviour
 
         
 
-        if (_gameManager.money < cost) button.interactable = false;
+        if (_gameManager.money < cost || _menuManager.clownEnergyPoints <= 0) button.interactable = false;
     }
 
     public void OnMouseOver()

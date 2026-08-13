@@ -122,18 +122,19 @@ public class GameManager : MonoBehaviour
     {
         clown.UpdateBalls();
     }
+
     public void BuyBall(Sprite ballSprite)
     {
         Debug.Log(ownedBallsInt);
-        ownedBallSpritesList[ownedBallsInt] = ballSprite;
-        
-        clown.UpdateBalls();
+        ownedBallSpritesList.Add(ballSprite);
+
+        //clownSkillPoints++;
         ownedBallsInt++;
     }
 
     public void DeterminePedestrianSpawn()
     {
-        int r = Random.Range(0, 600);
+        int r = Random.Range(0, 500);
 
         if (r == 1)
         {

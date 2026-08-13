@@ -35,7 +35,7 @@ public class Clown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetInteger("BallNum", _gameManager.ownedBallsInt);
+        anim.SetInteger("BallNum", _gameManager.ownedBallsInt + 1);
     }
 
     public void UpdateBalls()
@@ -48,7 +48,6 @@ public class Clown : MonoBehaviour
             ballPlacments[i].GetComponent<SpriteRenderer>().sprite = _gameManager.ownedBallSpritesList[i];
             Debug.Log("Inside Loop");
         }
-        
         
         // Debug.Log(_gameManager.ownedBallsInt);
 

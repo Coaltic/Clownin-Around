@@ -1,0 +1,33 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class BuyBall : MonoBehaviour
+{
+    public GameManager _gameManager;
+    public Button button;
+
+    void Start()
+    {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        button = this.GetComponent<Button>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (_gameManager.money < 20) button.interactable = false;
+    }
+
+    public void CallBuyBall(Sprite ballSprite)
+    {
+        if (_gameManager.money >= 20)
+        {
+            _gameManager.BuyBall(ballSprite);
+            _gameManager.money -= 20;
+            _gameManager.clownStylePoints++;
+            _gameManager._menuManager.clownEnergyPoints--;
+            _gameManager._menuManager.ChangedActiveScene(_gameManager.clownGoofinessPoints, _gameManager.clownSkillPoints, _gameManager.clownStylePoints);
+        }
+        
+    }
+}

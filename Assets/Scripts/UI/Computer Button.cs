@@ -28,6 +28,8 @@ public class ComputerButton : MonoBehaviour
         if (_gameManager == null) _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         if (_menuManager == null) _menuManager = GameObject.Find("GameManager/MenuManager").GetComponent<MenuManager>();
 
+        if (_menuManager.clownEnergyPoints <= 0) button.interactable = false;
+
     }
 
     public void OnMouseOver()

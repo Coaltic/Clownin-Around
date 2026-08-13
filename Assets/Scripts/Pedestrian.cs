@@ -46,9 +46,9 @@ public class Pedestrian : MonoBehaviour
 
     public void DetermineStopping()
     {
-        int r = Random.Range(0, (600 - (_gameManager.clownStylePoints * 10)));
+        int r = Random.Range(0, (200 - (_gameManager.clownStylePoints * 10)));
 
-        if (r == 1 && !watchingClown)
+        if ((r == 1 && !watchingClown) || (_gameManager.clownStylePoints > 19 && !watchingClown))
         {
             watchingClown = true;
             _gameManager.dailyVisitorsNum++;
@@ -64,11 +64,11 @@ public class Pedestrian : MonoBehaviour
 
     public void DeterminePaying()
     {
-        int r = Random.Range(0, (600 - (_gameManager.clownSkillPoints * 10)));
+        int r = Random.Range(0, (100 - (_gameManager.clownSkillPoints * 10)));
 
         if (r == 1 && !alreadyPaid)
         {
-            _gameManager.money++;
+            _gameManager.money += _gameManager.clownSkillPoints - 1;
             _gameManager.dailyMoneyEarned++;
             alreadyPaid = true;
         }
