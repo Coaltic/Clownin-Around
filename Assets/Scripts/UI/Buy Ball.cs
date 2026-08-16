@@ -17,7 +17,7 @@ public class BuyBall : MonoBehaviour
     void Update()
     {
         if (_gameManager.money < 20) button.interactable = false;
-        if (_gameManager.ownedBallSpritesList.Count >= 4)
+        if (_gameManager.ownedBallSpritesList.Count >= 5)
         {
             button.interactable = false;
             button.GetComponentInChildren<TMP_Text>().text = "SOLD OUT";
