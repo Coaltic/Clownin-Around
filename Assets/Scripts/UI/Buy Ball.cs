@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BuyBall : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class BuyBall : MonoBehaviour
     void Update()
     {
         if (_gameManager.money < 20) button.interactable = false;
+        if (_gameManager.ownedBallSpritesList.Count >= 4)
+        {
+            button.interactable = false;
+            button.GetComponentInChildren<TMP_Text>().text = "SOLD OUT";
+        }
     }
 
     public void CallBuyBall(Sprite ballSprite)
