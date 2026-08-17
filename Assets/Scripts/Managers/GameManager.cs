@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public bool isDayActive;
     public float dailyTimerMax = 120.0f;
     public float dailyTimer;
-    public TMP_Text timerText;
+    // public TMP_Text timerText;
     public TMP_Text moneyText;
 
     public GameObject clownPrefab;
@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     public int clownSkillPoints; // determines if pedestrians will want to pay
     public int clownStylePoints; // determines if pedestrians will want to stop
 
+    public bool trophyObtained;
+
     private void Awake()
     {
 
@@ -45,8 +47,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
-        
+
+        // InvokeRepeating("ShowFPS", 1, 1);
         
     }
 
@@ -67,9 +69,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void ShowFPS()
+    {
+        // timerText.text = ((int)(1.0f / Time.unscaledDeltaTime)).ToString();
+    }
+
     public void OnDayStart()
     {
-        timerText = GameObject.Find("UI Canvas/Timer Text").GetComponent<TMP_Text>();
+        // timerText = GameObject.Find("UI Canvas/Timer Text").GetComponent<TMP_Text>();
         moneyText = GameObject.Find("UI Canvas/Money Text").GetComponent<TMP_Text>();
         leftLoadingZone = GameObject.Find("Left Loading Zone");
         rightLoadingZone = GameObject.Find("Right Loading Zone");
@@ -112,7 +119,7 @@ public class GameManager : MonoBehaviour
     public void DayTimer()
     {
         dailyTimer -= Time.deltaTime;
-        timerText.text = dailyTimer.ToString();
+        
         moneyText.text = "$" + money.ToString();
 
         if (dailyTimer < 0.0f) EndOfDay();
@@ -134,7 +141,7 @@ public class GameManager : MonoBehaviour
 
     public void DeterminePedestrianSpawn()
     {
-        int r = Random.Range(0, 500);
+        int r = Random.Range(0, 250);
 
         if (r == 1)
         {

@@ -16,7 +16,7 @@ public class BuyBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_gameManager.money < 20) button.interactable = false;
+        if (_gameManager.money < 20 || _gameManager._menuManager.clownEnergyPoints <= 0) button.interactable = false;
         if (_gameManager.ownedBallSpritesList.Count >= 5)
         {
             button.interactable = false;

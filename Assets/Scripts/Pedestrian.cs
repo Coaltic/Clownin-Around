@@ -11,6 +11,8 @@ public class Pedestrian : MonoBehaviour
     public Clown clown;
     public GameManager _gameManager;
 
+    // public int payNum;
+
     void Start()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -29,6 +31,11 @@ public class Pedestrian : MonoBehaviour
     {
         if (!facingLeft && !watchingClown) transform.position += transform.right * speed * Time.deltaTime;
         if (facingLeft && !watchingClown) transform.position -= transform.right * speed * Time.deltaTime;
+
+        if (watchingClown)
+        {
+            DeterminePaying();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,9 +53,9 @@ public class Pedestrian : MonoBehaviour
 
     public void DetermineStopping()
     {
-        int r = Random.Range(0, (200 - (_gameManager.clownStylePoints * 10)));
+        int r = Random.Range(0, (150 - (_gameManager.clownStylePoints * 10)));
 
-        if ((r == 1 && !watchingClown) || (_gameManager.clownStylePoints > 19 && !watchingClown))
+        if ((r == 1 && !watchingClown) || _gameManager.clownStylePoints * 10 >= 150 )
         {
             watchingClown = true;
             _gameManager.dailyVisitorsNum++;
@@ -56,20 +63,17 @@ public class Pedestrian : MonoBehaviour
             anim.speed = DetermineWatchTime();
 
         }
-        if (watchingClown)
-        {
-            DeterminePaying();
-        }
+        
     }
 
     public void DeterminePaying()
     {
-        int r = Random.Range(0, (100 - (_gameManager.clownSkillPoints * 10)));
+        int r = Random.Range(0, (500 - (_gameManager.clownSkillPoints * 50)));
 
-        if (r == 1 && !alreadyPaid)
+        if ((r == 1 && !alreadyPaid) || (_gameManager.clownSkillPoints * 50 >= 500 && !alreadyPaid))
         {
-            _gameManager.money += _gameManager.clownSkillPoints - 1;
-            _gameManager.dailyMoneyEarned++;
+            _gameManager.money += _gameManager.clownSkillPoints;
+            _gameManager.dailyMoneyEarned += _gameManager.clownSkillPoints;
             alreadyPaid = true;
         }
     }
@@ -78,7 +82,6 @@ public class Pedestrian : MonoBehaviour
     {
         float watchtime = Random.Range((1.0f / _gameManager.clownGoofinessPoints), 1.0f);
         if (_gameManager.clownGoofinessPoints == 1) watchtime = 1.0f;
-        Debug.Log(watchtime);
         return watchtime;
     }
 

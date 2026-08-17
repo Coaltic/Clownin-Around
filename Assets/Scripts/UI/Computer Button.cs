@@ -29,6 +29,7 @@ public class ComputerButton : MonoBehaviour
         if (_menuManager == null) _menuManager = GameObject.Find("GameManager/MenuManager").GetComponent<MenuManager>();
 
         if (_menuManager.clownEnergyPoints <= 0) button.interactable = false;
+        if (_gameManager.money >= 250 && !_gameManager.trophyObtained) button.interactable = false;
 
     }
 
